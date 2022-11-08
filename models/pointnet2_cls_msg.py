@@ -6,7 +6,7 @@ from .pointnet2_utils import PointNetSetAbstractionMsg, PointNetSetAbstraction
 class get_model(nn.Module):
     def __init__(self,num_class,normal_channel=True):
         super(get_model, self).__init__()
-        in_channel = 3 if normal_channel else 0
+        in_channel = 6 if normal_channel else 3
         self.normal_channel = normal_channel
         self.sa1 = PointNetSetAbstractionMsg(512, [0.1, 0.2, 0.4], [16, 32, 128], in_channel,[[32, 32, 64], [64, 64, 128], [64, 96, 128]])
         self.sa2 = PointNetSetAbstractionMsg(128, [0.2, 0.4, 0.8], [32, 64, 128], 320,[[64, 64, 128], [128, 128, 256], [128, 128, 256]])
